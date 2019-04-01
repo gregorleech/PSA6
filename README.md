@@ -238,7 +238,7 @@ It should do the following steps.
    will need to take that into account when calling `get_shrink_factor`.
 1. Use the `shrink` function to return a shrunken version of the original
    image.
-1. Apply the six filters to the `FileImage` to create six new image objects,
+1. Apply the five filters to the `FileImage` to create five new image objects,
    each with a different filter applied to it.
 1. Creates a new `ImageWin`, which will be used to display the collage.
    The title of the window should read "Joe and Jane's Collage", where Joe and
@@ -246,12 +246,12 @@ It should do the following steps.
    The width and height of the window should be the exact size needed to fit
    the collage: this may or may not be the same as the width and height
    entered by the user initially.
-1. Use the `setPosition()` method on each of the six filtered image objects
+1. Use the `setPosition()` method on each of the six image objects
    to set their placement.
    You can look at the `makeGrayScale` function (Listing 6.4 in Section 6.3.2)
    to see how `setPosition()` is used to put an image right next to another
    one.
-1. Use the `draw()` method on each of the six filtered image objects to draw
+1. Use the `draw()` method on each of the six image objects to draw
    them on the `ImageWin` object you created.
    Again, the `makeGrayScale` function can help you see how to use the
    `draw()` method.
@@ -265,9 +265,9 @@ It should do the following steps.
 
 The function is worth   2  pts, broken down as follows:
 
--   1 pt)> for correctly getting the filename, desired width, and
+-   1 pt for correctly getting the filename, desired width, and
   desired height, then resizing the image by the correct scale factor.
--   1 pt)> for correctly positioning and displaying them six filters
+-   1 pt for correctly positioning and displaying them six filters
   into a 3x2 grid.
 
 
