@@ -46,11 +46,6 @@ using Git.
 1. Choose the "Open Repository" option in the window that pops up in the
    lower-right corner of the screen.
    
-	
-
-Note that for this assignment, it is **strongly** recommended that you do the
-coding only on one of your computers.
-
 
 # Computational Problems
 
@@ -92,7 +87,6 @@ However, there are a few requirements for these filters:
    discussed in class).
 3. One of the filters must use the  blur function.
    
-   While you may also use the book's `edgeDetect` function in your collage,
    
 
 
@@ -182,7 +176,6 @@ your
 
 ```python
 from collage_creator import *
-from cImage import *
 orig_img = FileImage("green-bird.gif")
 filtered_img = pixelMapper(orig_img, unique_filter)
 display(orig_img, "Original Image")
@@ -192,36 +185,6 @@ display(filtered_img, "Image after applying Unique Filter")
 This function is worth   2  pts.
 
 
-### Function: Unique Convolution Application
-
-It will take in an image and return a new image that is the same as the
-original but with a convolution filter applied to it.
-This function (whose name you will decide) will use the `convolve` function,
-given in the starter code.
-You will need to come up with a unique mask to apply and then use the convolve
-function to apply that mask to the given image.
-
-Wikipedia's article on [Kernel (Image
-Processing)](https://en.wikipedia.org/wiki/Kernel_(image_processing)) has
-several examples that of masks that you can use (stick with the 3x3 ones).
-You may use the `edgeDetect` function from the textbook (also given in the
-starter code) as a template for this function.
-Note however that the book's version of edge detect uses two masks while you
-only need one.
-
-Note that the given `convolve` function differs slightly from the one in the
-book.
-Rather than return a single number, it returns a tuple for the red, green, and
-blue channels.
-Most convolution filters (e.g. blur) work separately on the red, green, and
-blue channels rather than treating everything as grayscale with a single
-"intensity" value.
-
-Again, test in the REPL to make sure things work correctly.
-You can modify the example given above, but calling the function you just
-wrote instead of `pixelMapper`.
-
-This function is worth   2  pts.
 
 
 ### Function: `mirror`
@@ -252,7 +215,7 @@ You may use more than six total filters, but that means you would apply more
 than one filter to at least one of the images (since you only have 6 shown in
 your collage).
 
-These additional filters are worth 1 point each, for a total of   3
+These additional filters are worth 2 points each, for a total of   6
  pts.
 
 
@@ -300,11 +263,10 @@ It should do the following steps.
    See the `display()` function in the starter code to see how this method
    works.
 
-The function is worth   3  pts, broken down as follows:
+The function is worth   2  pts, broken down as follows:
 
 -   1 pt)> for correctly getting the filename, desired width, and
   desired height, then resizing the image by the correct scale factor.
--   1 pt)> for applying all of the filters.
 -   1 pt)> for correctly positioning and displaying them six filters
   into a 3x2 grid.
 
@@ -331,12 +293,12 @@ the following after running the program (note that the parts after the colons
 will be entered by the user).
 
 ```
-Enter the name of the image file (GIF format): cute-cat.gif
+Enter the name of the image file (GIF format): blues.gif
 Enter the maximum collage width: 600
 Enter the maximum collage height: 400
 ```
 
-You should test out your program for different images (both `cute-cat.gif` and
+You should test out your program for different images (both `blues.gif` and
 your own GIF at a minimum) and for different sizes of collage width/height to
 make sure it works as expected.
 
@@ -371,43 +333,5 @@ partner’s computers.
 This will ensure that you are not relying on any special setup on your own
 computer for the code to work.
 
-To submit your code, you will need to synchronize it using Git.
-To make sure your changes are saved and synchronized, follow these steps.
-
-1. Open the "Source Control" menu, either by clicking on the 3rd icon on the
-   left (right under the magnifying glass) _or_ by going to "View" and "SCM".
-
-1. Your `collage_creator.py` file should show up under the "Changes" section.
-   Click on the "+" icon to the right of each filename to "stage" the changes.
-   This should move the files to a section named "Staged Changes."
-
-1. **Important:** The image file (GIF format) you used for your collage should
-   also be listed under the "Changes" section. Make sure you stage that file
-   so that it gets added to your repository.
-
-1. Commit your changes by typing in a descriptive message (e.g. "finished
-   foo function") into the "Message" textbox (above the Staged Changes
-   area). After entering the message, click the checkmark icon above the
-   message box to perform the commit.
-   This should remove both files from the Staged Changes section.
-
-1. Finally, Sync your commit(s) to the server by clicking the "..." (to the
-   right of the checkmark from the last step) and select the "Sync" option.
-   This will likely result in a pop-up notifying you that the sync will do a
-   push and a pull.
-   Select "OK" (or "OK and don't ask again") to complete the sync.
-
-	If you run into problems, make sure you are properly connected to the
-	Internet and try the Sync again.
-	If you are still running into problems, check Piazza and ask a new
-	question there if the answer doesn't already exist.
 
 
-Finally, to make sure that your changes were synced correctly, have your
-partner do the final step above (namely "..." and then "Sync").
-This should fetch the changes you made.
-You can then test on their computer to make sure it works exactly the same as
-on your computer.
-If your partner has trouble accessing and/or running the file, it is likely
-that the grader will also have problems and your grade will be negatively
-impacted.
