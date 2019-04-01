@@ -136,19 +136,21 @@ We are going to intensify the colors to make a more interesting image, something
 
 The method for intensifying the image is:  iterate over all pixels , and for each pixel, test the color and intensify the color if it meets certain criteria.
 
-You will modify a function called `intensify_pixel` that takes as a parameter an pixel, and returns a new
-pixel that is a copy of the parameter image, except that certain colors have been intensified.  
+You will modify a function called `intensifyPixel` that takes as a parameter a pixel, and returns a new
+pixel that is a copy of the parameter pixel, except that certain colors have been intensified.
 
-**Q9:** Which color is turned to white by the code? Edit the code so that this color will be used now. 
-
-**Q10:** Answer the question in the comment below:
-
-``` python
-max_color_distance = 255 # Why do I use 255 to create the distance threshold for testing?
-```
-
-Once you've written the function, test it by running the `intensify_image` function that is already 
+First, test the existing function by running `pixelMapper` with the `intensifyPixel` function that is already 
 in comp110_lab08.
+
+Second, load the `blues.gif` image and use `getColorClick`to check out some of the pixel values.  Look at the `blue`, `white`, `black` and `yellow` areas.
+
+**Q9:** Create a table giving representative pixel values for `blue`, `white`, `black` and `yellow` areas.
+
+
+**Q10:** Which color is turned to white by the code? Edit the code so that this color will be used now. 
+
+Modify the code to yield a different image that is appealing to you.
+Once you've modified the function to your satisfaction, save an image to a GIF file (or do a screenshot) and incorporate it into your lab 8 submission.
 
 # Submission
 Before leaving lab, you should submit your answers to all the lab questions.

@@ -44,11 +44,12 @@ point.
 def display(img, title):
     """
     Displays the given image in a new window with the given title for the
-    window.
+    window. Return the new window
     """
     img_win = ImageWin(title, img.getWidth(), img.getHeight())
     img.draw(img_win)
     img_win.exitOnClick()
+    return img_win
 
 
 def negativePixel(oldPixel):
@@ -81,7 +82,6 @@ def pixelMapper(oldimage, rgbFunction):
     Creates a new image that is the same as the given image (oldImage) but
     with the rgbFunction applied to every pixel.
 
-    See the edgeDetect function below to see how it can be called.
     """
 
     width = oldimage.getWidth()

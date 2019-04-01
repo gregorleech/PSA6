@@ -32,11 +32,11 @@ def resize(imageFile):
     Code to test the double function.
     """
     old_image = FileImage(imageFile)
-    image_window = ImageWin("Image Processing", old_image.getWidth(), old_image.getHeight())
+    image_window = ImageWin("Input Image", old_image.getWidth(), old_image.getHeight())
     old_image.draw(image_window)
     
     double_image = double(old_image)   
-    double_image_window = ImageWin("Image Processing", 
+    double_image_window = ImageWin("Resized Image", 
         double_image.getWidth(), double_image.getHeight()) 
     double_image.draw(double_image_window)
 
@@ -53,31 +53,55 @@ def halve(oldimage):
     return oldimage # you will replace this line
 
 
-def get_gif(filename):
+def display(img, title):
     """
-    Displays image from filename in an ImageWindow and returns an
-    image that can be used for processing
+    Displays the given image in a new window with the given title for the
+    window. Return the new window
     """
-    image = FileImage(filename)
-   
-    return image
+    img_win = ImageWin(title, img.getWidth(), img.getHeight())
+    img.draw(img_win)
+    img_win.exitOnClick()
+    return img_win
 
-def win_image(image):
-    """
-    Displays image  in an ImageWindow 
-    """
-    image_window = ImageWin(image.imFileName,
-          image.getWidth(), image.getHeight())
-    image.draw(image_window)
-    # image_window.exitOnClick()
-    return image_window
 
-def get_color_click(image):
+def pixelMapper(oldimage, rgbFunction):
+    """
+    Creates a new image that is the same as the given image (oldImage) but
+    with the rgbFunction applied to every pixel.
+
+    """
+
+    width = oldimage.getWidth()
+    height = oldimage.getHeight()
+    newim = EmptyImage(width,height)
+
+    for row in range(height):
+        for col in range(width):
+            originalPixel = oldimage.getPixel(col, row)
+            newPixel = rgbFunction(originalPixel)
+            newim.setPixel(col, row, newPixel)
+
+    return newim
+
+def getColorClick(image):
+    '''
+    This function takes an image, displays it in a window and
+    allows the user to click around the image to find out the
+    pixel values.  The user clicks in the upper left hand corner
+    (smaller than (10,10)) twice to stop (or hits <ctl-c>). 
+
+    Typical output (pixel at 181,318 has red = 141, etc.):
+
+    [(181, 318), (141, 211, 95)]
+
+    '''
     position = [10,10]
-    image_win = win_image(image)
-    while position != [0,0]: 
+    image_win = ImageWin("", image.getWidth(), image.getHeight())
+    image.draw(image_win)
+    while position[0] >= 10 and position[1] >= 10 : 
         position = image_win.getMouse()
         print([ position, image.getPixel(position[0],position[1])])
+    image_win.exitOnClick()
 
 def intensify_pixel(pixel):
     '''
@@ -118,23 +142,14 @@ def intensify_pixel(pixel):
     elif dist_white is dist_min:
         pixel = Pixel(255,255,255)
     #else they are all greater than the threshold, so no change!!
-
     return pixel
 
-def intensify_image(img):
-    for x in range(img.getWidth()):
-        for y in range(img.getHeight()):
-            img.setPixel(x,y,intensify_pixel(img.getPixel(x,y)))
-    img_window = ImageWin("Intensified",
-          img.getWidth(), img.getHeight())
-    img.draw(img_window)
-    # img_window.exitOnClick()
-    return img
 
 
-# the code below is for testing
 
-blues = FileImage("blues.gif")
-intensify_image(blues)
+if __name__ == "__main__":
+    blues = FileImage("blues.gif")
+    intense_blues = pixelMapper(blues,intensifyPixel)
+    display(intense_blues,"Intense")
 # only uncomment the line below when you are done!
 # blues.save("blues_processed.gif")
